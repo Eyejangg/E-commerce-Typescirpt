@@ -1,10 +1,10 @@
-class Customer {
-    private name: string
-    private address: string
+class Customer { // Class
+    private name: string // Attribute
+    private address: string// Attribute
 
     constructor(name: string, address: string){
-        this.name = name
-        this.address = address
+        this.name = name 
+        this.address = address 
     }
 
     public getInfo():string{
@@ -12,15 +12,17 @@ class Customer {
     }
 }
 
-class Order {
-    private customer: Customer;
+class Order { // Class
+    private customer: Customer; //  1 , 0 ดั่งรูป / 1 , 1 / 1 , หลายคน / , หลายคน , หลายคน , / เข้าใจด้วยตัวเอง
+    // multiplicity มักจะใช้เพื่ออธิบายความสัมพันธ์ระหว่างข้อมูลหรือประเภทของข้อมูลที่มีหลายค่าหรือหลายมิติที่เกี่ยวข้องกับกันและกัน
     private payment: Payment = new Cash(0, 0)
-    private orderDetails: OrderDetail[] = []
-    private date: string
-    private status: string
+    private orderDetails: OrderDetail[] = [] // Aggregation - แนวคิดนี้ต่างจากแนวคิดการสืบทอดคุณสมบัติที่
+    // จะมองว่าคลาสหนึ่งสืบทอดคุณสมบัติจากอีกคลาสหนึ่ง แต่จะมองคลาสหนึ่ง ๆ // สืบทอดคุณสมบัติอีกคลาสนึ่งเข้ามาร่วมด้วย 1 , 1 ดูที่ปลายหัวลูกศร
+    private date: string // Attribute
+    private status: string // Attribute
 
     constructor(customer: Customer, date: string , status: string){
-        this.customer = customer
+        this.customer = customer // จะเห็นได้ว่า Order ต้องมี Customer เพราะว่าประเภทของข้อมูลนั้น เกี่ยวข้องกันและกัน
         this.date = date
         this.status = status
     }
@@ -138,7 +140,7 @@ class OrderDetail {
     }
 }
 
-abstract class Payment{
+abstract class Payment{ // abstract class คือคลาสที่ไม่สามารถสร้างอ็อบเจ็กต์โดยตรงจากมันได้
     private amount: number
 
     constructor(amount: number){
